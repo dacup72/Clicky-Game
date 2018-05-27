@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Nav from "../Nav";
 import Header from "../Header";
 import Footer from "../Footer";
+import Container from "../Container";
 
 
 class Game extends Component {
@@ -14,6 +15,7 @@ class Game extends Component {
           topScore={20}
         />
         <Container>
+        <div>Hello</div>
         </Container>
         <Header />
         <Footer />
