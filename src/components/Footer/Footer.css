@@ -1,1 +1,9 @@
 
+.footer {
+  background: 
+  #6956AF;
+  height: 100px;
+  position: relative;
+  color: white;
+  overflow: auto;
+}
