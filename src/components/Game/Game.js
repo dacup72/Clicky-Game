@@ -1,21 +1,31 @@
 import React, { Component } from "react";
 import Nav from "../Nav";
 import Header from "../Header";
-import Footer from "../Footer";
 import Container from "../Container";
+import ClickItem from "../ClickItem";
+import Footer from "../Footer";
+import data from "../../data.json";
+
 
 
 class Game extends Component {
+  state = {
+    data,
+    score: 0,
+    topScore: 0
+  };
   
   render() {
     return (
       <div>
         <Nav 
-          score={5}
-          topScore={20}
+          score={this.state.score}
+          topScore={this.state.topScore}
         />
         <Container>
-        <div>Hello</div>
+        <ClickItem 
+
+        />
         </Container>
         <Header />
         <Footer />
