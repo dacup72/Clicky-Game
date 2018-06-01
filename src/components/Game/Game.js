@@ -14,6 +14,22 @@ class Game extends Component {
     score: 0,
     topScore: 0
   };
+
+  componentDidMount() {
+    this.setState({ data: this.shuffleData(this.state.data) });
+  }
+
+  shuffleData = data => {
+    let i = data.length - 1;
+    while (i > 0) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = data[i];
+      data[i] = data[j];
+      data[j] = temp;
+      i--;
+    }
+    return data;
+  };
   
   render() {
     return (
