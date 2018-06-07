@@ -30,7 +30,7 @@ class Game extends Component {
     }
     return data;
   };
-  
+
   resetData = data => {
     const resetData = data.map(item => ({ ...item, clicked: false }));
     return this.shuffleData(resetData);
@@ -46,9 +46,11 @@ class Game extends Component {
           topScore={this.state.topScore}
         />
         <Container>
+        {this.state.data.map(item => (
         <ClickItem 
 
         />
+        ))}
         </Container>
         <Header />
         <Footer />
