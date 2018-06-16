@@ -36,6 +36,13 @@ class Game extends Component {
     return this.shuffleData(resetData);
   };
 
+  handleIncorrectGuess = data => {
+    this.setState({
+      data: this.resetData(data),
+      score: 0
+    });
+  };
+
   handleItemClick = () => {
     
   }
