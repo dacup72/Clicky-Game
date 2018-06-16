@@ -39,7 +39,17 @@ class Game extends Component {
   handleIncorrectGuess = data => {
     this.setState({
       data: this.resetData(data),
-      score: this. state ??
+      score: 0
+    });
+  };
+  handleCorrectGuess = newData => {
+    const { topScore, score } = this.state;
+    const newScore = score + 1;
+    const newTopScore = newScore > topScore ? newScore : topScore;
+    this.setState({
+      data: this.shuffleData(newData),
+      score: newScore,
+      topScore: newTopScore
     });
   };
 
