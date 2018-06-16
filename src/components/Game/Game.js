@@ -39,7 +39,7 @@ class Game extends Component {
   handleIncorrectGuess = data => {
     this.setState({
       data: this.resetData(data),
-      score: 0
+      score: this. state ??
     });
   };
 
