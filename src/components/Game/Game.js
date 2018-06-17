@@ -42,6 +42,7 @@ class Game extends Component {
       score: 0
     });
   };
+
   handleCorrectGuess = newData => {
     const { topScore, score } = this.state;
     const newScore = score + 1;
@@ -53,9 +54,17 @@ class Game extends Component {
     });
   };
 
-  handleItemClick = () => {
-    
-  }
+    handleItemClick = id => {
+    let guessedCorrectly = false;
+    const newData = this.state.data.map(item => {
+      const newItem = { ...item };
+      if (newItem.id === id) {
+        
+      }
+      return newItem;
+    });
+    guessedCorrectly ? this.handleCorrectGuess(newData) : this.handleIncorrectGuess(newData);
+  };
 
 
 
