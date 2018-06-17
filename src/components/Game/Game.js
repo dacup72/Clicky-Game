@@ -59,7 +59,10 @@ class Game extends Component {
     const newData = this.state.data.map(item => {
       const newItem = { ...item };
       if (newItem.id === id) {
-        
+        if (!newItem.clicked) {
+          newItem.clicked = true;
+          guessedCorrectly = true;
+        }
       }
       return newItem;
     });
