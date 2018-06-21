@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./NavMessage.css";
 
+
 class NavMessage extends Component {
   state = {
     message: "",
@@ -32,7 +33,6 @@ class NavMessage extends Component {
     }
   };
 
-  
   render() {
     return (
       <li className={this.state.animating ? this.state.message : ""}>
