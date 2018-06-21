@@ -6,8 +6,6 @@ import ClickItem from "../ClickItem";
 import Footer from "../Footer";
 import data from "../../data.json";
 
-
-
 class Game extends Component {
   state = {
     data,
@@ -18,6 +16,29 @@ class Game extends Component {
   componentDidMount() {
     this.setState({ data: this.shuffleData(this.state.data) });
   }
+
+  handleCorrectGuess = newData => {
+    const { topScore, score } = this.state;
+    const newScore = score + 1;
+    const newTopScore = newScore > topScore ? newScore : topScore;
+    this.setState({
+      data: this.shuffleData(newData),
+      score: newScore,
+      topScore: newTopScore
+    });
+  };
+
+  handleIncorrectGuess = data => {
+    this.setState({
+      data: this.resetData(data),
+      score: 0
+    });
+  };
+
+  resetData = data => {
+    const resetData = data.map(item => ({ ...item, clicked: false }));
+    return this.shuffleData(resetData);
+  };
 
   shuffleData = data => {
     let i = data.length - 1;
@@ -31,30 +52,7 @@ class Game extends Component {
     return data;
   };
 
-  resetData = data => {
-    const resetData = data.map(item => ({ ...item, clicked: false }));
-    return this.shuffleData(resetData);
-  };
-
-  handleIncorrectGuess = data => {
-    this.setState({
-      data: this.resetData(data),
-      score: 0
-    });
-  };
-
-  handleCorrectGuess = newData => {
-    const { topScore, score } = this.state;
-    const newScore = score + 1;
-    const newTopScore = newScore > topScore ? newScore : topScore;
-    this.setState({
-      data: this.shuffleData(newData),
-      score: newScore,
-      topScore: newTopScore
-    });
-  };
-
-    handleItemClick = id => {
+  handleItemClick = id => {
     let guessedCorrectly = false;
     const newData = this.state.data.map(item => {
       const newItem = { ...item };
@@ -66,18 +64,16 @@ class Game extends Component {
       }
       return newItem;
     });
-    guessedCorrectly ? this.handleCorrectGuess(newData) : this.handleIncorrectGuess(newData);
+    guessedCorrectly
+      ? this.handleCorrectGuess(newData)
+      : this.handleIncorrectGuess(newData);
   };
-
-
 
   render() {
     return (
       <div>
-        <Nav
-          score={this.state.score}
-          topScore={this.state.topScore}
-        />
+        <Nav score={this.state.score} topScore={this.state.topScore} />
+        <Header />
         <Container>
           {this.state.data.map(item => (
             <ClickItem
@@ -89,7 +85,6 @@ class Game extends Component {
             />
           ))}
         </Container>
-        <Header />
         <Footer />
       </div>
     );
